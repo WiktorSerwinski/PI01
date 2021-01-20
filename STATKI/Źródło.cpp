@@ -26,10 +26,12 @@ void planszaodkryta1();
 void planszaodkryta2();
 void planszazakryta1();
 void planszazakryta2();
+void kolor();
 char plansza_odkryta1[8][8], plansza_odkryta2[8][8], plansza_zakryta1[8][8], plansza_zakryta2[8][8]; // plansze
 
 int main()
 {
+    system("COLOR 0F");
     int menu; // menu glowne
 
 MENU: // przypisanie dla funkcji 'goto'
@@ -39,6 +41,7 @@ MENU: // przypisanie dla funkcji 'goto'
     cout << "1. GRAJ\n";
     cout << "2. ZASADY GRY\n";
     cout << "3. TWORCY\n";
+    cout << "4. ZMIANA MOTYWU KONSOLI\n";
     cin >> menu;
 
     switch (menu)
@@ -55,11 +58,12 @@ MENU: // przypisanie dla funkcji 'goto'
         wybor_statkow1(wariant1);
 
         system("cls");
-        cout << "GRACZ 2:\n";
+        /*cout << "GRACZ 2:\n";
         cout << "WYBIERZ WARIANT GRY\n\n";
         cout << "Nr. 1 - Trzy statki na 2 pola,   \tDwa statki na 3 pola, \tJeden statek na 4 pola\n";
         cout << "Nr. 2 - Cztery statki na 2 pola, \tTrzy statki na 3 pola, \tDwa statki na 4 pola\n";
-        cin >> wariant2;
+        cin >> wariant2;*/
+        wariant2 = wariant1;
         wybor_statkow2(wariant2);
 
         for (;;)
@@ -67,33 +71,37 @@ MENU: // przypisanie dla funkcji 'goto'
             strzal1();
             if (wariant2 == 1 && punkty1 == 16)
             {
-                cout << "GRACZ 1 WYGRAL!!!!";
+                cout << "\t\t\n\n\n\n-------------------------GRACZ 1 WYGRAL!!!!-------------------------";
                 Sleep(3000);
                 break;
             }
             else if (wariant2 == 2 && punkty1 == 25)
             {
-                cout << "GRACZ 1 WYGRAL!!!!";
+                cout << "\t\t\n\n\n\n-------------------------GRACZ 1 WYGRAL!!!!-------------------------";
                 Sleep(3000);
                 break;
             }
             system("cls");
-            cout << "Zmiana gracza - 5 sekund na zmiane";
+            cout << "\t\t\n\n\n\n-------------------------Zmiana gracza - 5 sekund na zmiane-------------------------";
             Sleep(5000);
             system("cls");
             strzal2();
             if (wariant1 == 1 && punkty2 == 16)
             {
-                cout << "GRACZ 2 WYGRAL!!!!";
+                cout << "\t\t\n\n\n\n-------------------------GRACZ 2 WYGRAL!!!!-------------------------";
                 Sleep(3000);
                 break;
             }
             else if (wariant1 == 2 && punkty2 == 25)
             {
-                cout << "GRACZ 2 WYGRAL!!!!";
+                cout << "\t\t\n\n\n\n-------------------------GRACZ 2 WYGRAL!!!!-------------------------";
                 Sleep(3000);
                 break;
             }
+            system("cls");
+            cout << "\t\t\n\n\n\n-------------------------Zmiana gracza - 5 sekund na zmiane-------------------------";
+            Sleep(5000);
+            system("cls");
         }
 
         system("cls");
@@ -119,6 +127,14 @@ MENU: // przypisanie dla funkcji 'goto'
         system("cls");
         cout << "Gre wykonal:\n\tMikolaj Plader IO\noraz\tWiktor Serwinski IO";
         Sleep(3000);
+        goto MENU;
+    }
+    break;
+
+    case 4:
+    {
+        system("cls");
+        kolor();
         goto MENU;
     }
     break;
@@ -284,15 +300,15 @@ void planszaodkryta1()
     cout << "----------------------------\n";
     for (int i = 0; i < 8; i++)
     {
-        cout << "|W" << i + 1 ;
+        cout << "|W" << i + 1;
         for (int j = 0; j < 8; j++)
         {
-            cout << "|" << plansza_odkryta1[i][j] <<" ";
+            cout << "|" << plansza_odkryta1[i][j] << " ";
         }
         cout << "|\n";
         cout << "----------------------------\n";
     }
-    
+
 }
 void planszaodkryta2()
 {
@@ -328,7 +344,7 @@ void planszazakryta1()
 }
 void planszazakryta2()
 {
-   
+
     cout << "|WK|K1|K2|K3|K4|K5|K6|K7|K8|\n";
     cout << "----------------------------\n";
     for (int i = 0; i < 8; i++)
@@ -880,7 +896,7 @@ void strzal1()
 MENU_strzal1:
 
     system("cls");
-    cout << "Legedna: * statek\n         0 strzal niecelny\n         X strzal celny\n";
+    cout << "Legenda: * statek\n         0 strzal niecelny\n         X strzal celny\n";
     cout << "\t\tGracz 1 oddaje strzal";
     cout << "\nTwoja plansza:\n\n";
     planszaodkryta1();
@@ -927,7 +943,7 @@ void strzal2()
 MENU_strzal2:
 
     system("cls");
-    cout << "Legedna: * statek\n         0 strzal niecelny\n         X strzal celny\n";
+    cout << "Legenda: * statek\n         0 strzal niecelny\n         X strzal celny\n";
     cout << "\t\tGracz 2 oddaje strzal";
     cout << "\nTwoja plansza:\n\n";
     planszaodkryta2();
@@ -953,7 +969,7 @@ MENU_strzal2:
         Sleep(1500);
         goto MENU_strzal2;
     }
-    else if(plansza_odkryta1[wiersz - 1][kolumna - 1] == '0')
+    else if (plansza_odkryta1[wiersz - 1][kolumna - 1] == '0')
     {
         cout << "\nJuz tu strzelales!";
         Sleep(1000);
@@ -1300,6 +1316,74 @@ MENU4:
         system("cls");
         planszaodkryta2();
         goto MENU4;
+    }
+    break;
+    }
+}
+
+void kolor()
+{
+MENU:
+    system("COLOR 0F");
+    system("cls");
+    int kolor, ok;
+    cout << "WYBIERZ MOTYW:\n\n";
+    cout << "1. Oryginalny\n2. Odwrocony\n3. Niebieski\n4. Pozytywny\n";
+    cout << "\nOpcja: ";
+    cin >> kolor;
+    cout << endl;
+    switch (kolor)
+    {
+    case 1:
+    {
+        system("COLOR 0F");
+        cout << "OK?\n 1. TAK\n 2. NIE\n";
+        cin >> ok;
+        if (ok != 1)
+        {
+            goto MENU;
+        }
+    }
+    break;
+    case 2:
+    {
+        system("COLOR F0");
+        cout << "OK?\n 1. TAK\n 2. NIE\n";
+        cin >> ok;
+        if (ok != 1)
+        {
+            goto MENU;
+        }
+    }
+    break;
+    case 3:
+    {
+        system("COLOR 9E");
+        cout << "OK?\n 1. TAK\n 2. NIE\n";
+        cin >> ok;
+        if (ok != 1)
+        {
+            goto MENU;
+        }
+    }
+    break;
+    case 4:
+    {
+        system("COLOR 3E");
+        cout << "OK?\n 1. TAK\n 2. NIE\n";
+        cin >> ok;
+        if (ok != 1)
+        {
+            goto MENU;
+        }
+    }
+    break;
+    default:
+    {
+        cout << "\nZly wybor!!";
+        Sleep(1500);
+        system("cls");
+        goto MENU;
     }
     break;
     }
