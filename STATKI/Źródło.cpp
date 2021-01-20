@@ -880,6 +880,7 @@ void strzal1()
 MENU_strzal1:
 
     system("cls");
+    cout << "Legedna: * statek\n         0 strzal niecelny\n         X strzal celny\n";
     cout << "\t\tGracz 1 oddaje strzal";
     cout << "\nTwoja plansza:\n\n";
     planszaodkryta1();
@@ -905,9 +906,17 @@ MENU_strzal1:
         Sleep(1500);
         goto MENU_strzal1;
     }
+    else if (plansza_odkryta1[wiersz - 1][kolumna - 1] == '0')
+    {
+        cout << "\nJuz tu strzelales!";
+        Sleep(1000);
+        system("cls");
+        goto MENU_strzal1;
+    }
     else if (plansza_odkryta2[wiersz - 1][kolumna - 1] != '*')
     {
         cout << "\nNie trafiles!";
+        plansza_zakryta2[wiersz - 1][kolumna - 1] = '0';
         Sleep(1000);
         system("cls");
     }
@@ -918,6 +927,7 @@ void strzal2()
 MENU_strzal2:
 
     system("cls");
+    cout << "Legedna: * statek\n         0 strzal niecelny\n         X strzal celny\n";
     cout << "\t\tGracz 2 oddaje strzal";
     cout << "\nTwoja plansza:\n\n";
     planszaodkryta2();
@@ -943,12 +953,21 @@ MENU_strzal2:
         Sleep(1500);
         goto MENU_strzal2;
     }
+    else if(plansza_odkryta1[wiersz - 1][kolumna - 1] == '0')
+    {
+        cout << "\nJuz tu strzelales!";
+        Sleep(1000);
+        system("cls");
+        goto MENU_strzal2;
+    }
     else if (plansza_odkryta1[wiersz - 1][kolumna - 1] != '*')
     {
         cout << "\nNie trafiles!";
+        plansza_zakryta1[wiersz - 1][kolumna - 1] = '0';
         Sleep(1000);
         system("cls");
     }
+
 }
 
 void g1s1losowanie()
